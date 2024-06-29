@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZomatoLogin</title>
+</head>
+   <style>
+    *{
+        box-sizing: border-box;
+
+    }
+    body{
+        margin: 0;
+        height: 100vh;
+        width: 100vw;
+        overflow: hidden;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #f71f1f;
+        background: #d3e4a4eb;   
+    }
+    .Login{
+        width: 500px;
+        padding: 50px;
+        border-radius: 25px;
+        background-color: #ecf0f3;
+        box-shadow: 13px 13px 20px #cbced1,
+                    -13px -13px 20px #ffffff;
+
+    }
+
+    .logo{
+        background: url(data:image/png;base64,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);
+        background-position: center;
+        background-size: cover;
+        width: 60px;
+        height: 60px;
+        border-radius: 20;
+        margin: 0 auto;
+        box-shadow: 0px 0px 2px #5f5f5f,
+                    0px 0px 0px 2px #fa6f38,
+                    8px 8px 10px #a7aaaf,
+                    -8px -8px 10px #ffffff;
+    }
+    
+    .title{
+        text-align: center;
+        font-size: 30px;
+        padding-top: 25px;
+        letter-spacing: 0.5px;
+
+    }
+    .subtitle{
+        text-align: center;
+        font-size: 15px;
+        padding-top: 25px;
+        letter-spacing: 3px;
+    }
+
+    .fields{
+        width: 100%;
+        padding: 20px 10px 10px 10px;
+    }
+
+    .fields input{
+        border: none;
+        outline: none;
+        background: none;
+        font-size: 15px;
+        color: #860bd3;
+        padding: 20px 20px 20px 5px;
+
+    }
+
+
+    .fields .Username, .Password{
+         margin-bottom: 35px;
+         border-radius: 20px;
+         box-shadow: inset 10px 10px  10px #cbced1,
+                     inset -10px -10px 10px #ffffff;
+    }
+
+    
+    .Signin{
+        outline: none;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        height: 60px;
+        border-radius: 30px;
+        font-size: 25px;
+        font-weight: 700;
+        color: #fff;
+        box-shadow: 3px 3px 8px #b1b1b1,
+                    -3px -3px 8px #ffffff;
+        background: rgb(254, 42, 4);
+        transition: .10s;
+    }
+
+    .Signin:hover{
+        background: rgb(219, 9, 2);
+        
+    }
+    .Signin:active{
+        background: rgba(205, 6, 6, 0.927);
+    }
+
+    .link{
+        padding-top: 20px;
+        text-align: center;
+        
+    }
+
+    .link a{
+        text-decoration: none;
+        color: #3c4dcf;
+        font-size: 20px;
+        font-weight: 500;
+    }
+
+
+
+    .fields svg{
+        height: 22px;
+        margin: 0px 10px -5px 25px;
+    }
+   </style>
+   
+<body>
+    
+    <div class="Login">
+        <div class="logo"></div>
+        <div class="title">Login</div>
+        <div class="subtitle">We serve you the best food</div>
+        
+        <div class="fields">
+            <from action="#">
+                <div class="Username"><svg class="svg-icon" viewBox="0 0 20 20">
+                <path d="M17.388,4.751H2.613c-0.213,0-0.389,0.175-0.389,0.389v9.72c0,0.216,0.175,0.389,0.389,0.389h14.775c0.214,0,0.389-0.173,0.389-0.389v-9.72C17.776,4.926,17.602,4.751,17.388,4.751 M16.448,5.53L10,11.984L3.552,5.53H16.448zM3.002,6.081l3.921,3.925l-3.921,3.925V6.081z M3.56,14.471l3.914-3.916l2.253,2.253c0.153,0.153,0.395,0.153,0.548,0l2.253-2.253l3.913,3.916H3.56z M16.999,13.931l-3.921-3.925l3.921-3.925V13.931z"></path>
+
+                </svg><input type="email" class="userinput" placeholder="Enter Email"/></div>
+
+
+
+
+                <div class="Password"><svg class="svg-icon" viewBox="0 0 20 20">
+                <path d="M17.308,7.564h-1.993c0-2.929-2.385-5.314-5.314-5.314S4.686,4.635,4.686,7.564H2.693c-0.244,0-0.443,0.2-0.443,0.443v9.3c0,0.243,0.199,0.442,0.443,0.442h14.615c0.243,0,0.442-0.199,0.442-0.442v-9.3C17.75,7.764,17.551,7.564,17.308,7.564 M10,3.136c2.442,0,4.43,1.986,4.43,4.428H5.571C5.571,5.122,7.558,3.136,10,3.136 M16.865,16.864H3.136V8.45h13.729V16.864z M10,10.664c-0.854,0-1.55,0.696-1.55,1.551c0,0.699,0.467,1.292,1.107,1.485v0.95c0,0.243,0.2,0.442,0.443,0.442s0.443-0.199,0.443-0.442V13.7c0.64-0.193,1.106-0.786,1.106-1.485C11.55,11.36,10.854,10.664,10,10.664 M10,12.878c-0.366,0-0.664-0.298-0.664-0.663c0-0.366,0.298-0.665,0.664-0.665c0.365,0,0.664,0.299,0.664,0.665C10.664,12.58,10.365,12.878,10,12.878"></path>
+
+                </svg><input type="password" class="passinput" placeholder="password"/></div>
+            
+            </from>
+        </div>
+    
+
+                <button class="Signin">Login</button>
+                <div class="link">
+                <a href="#">Forget password ?</a> or <a href="#">Signup</a>
+                </div>
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+    
+</body>
+</html>
